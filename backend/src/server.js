@@ -83,6 +83,15 @@ app.use('/api/logs', logsRoutes);
 app.use('/api/blocked', blockedRoutes);
 app.use('/api/users', usersRoutes);
 
+// Serve static frontend assets in production
+if (process.env.NODE_ENV === 'production') {
+  const path = require('path');
+  app.use(express.static(path.join(__dirname, '../../frontend/dist')));
+  app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, '../../frontend/dist/index.html'));
+  });
+}
+
 // ─── Error Handler ────────────────────────────────────────────
 app.use((err, req, res, next) => {
   console.error('[Server Error]', err.message);
