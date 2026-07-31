@@ -5,7 +5,7 @@
   "description": "AegisX — Enterprise SIEM & Intrusion Detection System",
   "scripts": {
     "setup": "npm install --prefix backend && npm install --include=dev --prefix frontend",
-    "build": "npm run build --prefix frontend",
+    "build": "npm run setup && npm run build --prefix frontend",
     "start": "node backend/src/server.js"
   }
 }
