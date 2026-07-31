@@ -25,6 +25,11 @@ pool.on('error', (err) => {
 });
 
 const initDB = async () => {
+  if (process.env.DATABASE_URL) {
+    console.log('[DB] Connecting to database using DATABASE_URL...');
+  } else {
+    console.log(`[DB] Connecting to database using host: ${process.env.DB_HOST || 'localhost'}:${process.env.DB_PORT || 5432}...`);
+  }
   const client = await pool.connect();
   try {
     await client.query(`

@@ -110,7 +110,7 @@ const start = async () => {
       console.log(`📋  Default admin: admin@aegisx.io / Admin@1234\n`);
     });
   } catch (err) {
-    console.error('[Startup] Fatal error:', err.message);
+    console.error('[Startup] Fatal error:', err);
     process.exit(1);
   }
 };
